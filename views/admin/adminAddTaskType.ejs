@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div>
+    <div>
+      <div>
+        <h1>Admin Dashboard</h1>
+      </div>
+      <%- include('adminLeftNav') %>
+
+      <div class="rightcontainer">
+        <h2>Add Task Type</h2>
+        <p style="color: red;"><%= msg %></p>
+        <div class="frm">
+          <form action="" method="post">
+            Task Name : <input type="text" name="task_type_name" placeholder="Enter task name" required><br><br>
+            <input class="sub" type="submit" name="submit" value="Add Task">
+          </form>
+        </div>
+        <h2>List of Task</h2>
+        <div>
+          <table>
+            <tr>
+              <th>Serial No</th>
+              <th>Designation Name</th>
+            </tr>
+            <% if(taskTypeArray){ %>
+              <% var x=0 %>
+            <% taskTypeArray.forEach(function(ele){ %>
+            <tr>
+              <td><%= x=x+1 %></td>
+              <td><%= ele.taskName %></td>
+            </tr>
+            <% }) }else{ %>
+            <p style="color: red;">Please refreash</p>
+            <% } %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

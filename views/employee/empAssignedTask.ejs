@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div>
+        <div>
+            <div><h1>Employee Dashboard</h1></div>
+            <%- include('empLeftNav') %>
+            <div class="rightcontainerViewTask">
+                <h2>Employee Task</h2>
+                <div>
+                  <table>
+                    <tr>
+                      <th>Serial No</th>
+                      <th>Task Name</th>
+                      <th>Task Description</th>
+                      <th>Release</th>
+                      <th>Sprint</th>
+                      <th>Task Type</th>
+                      <th>Assign By</th>
+                      <th>Start Date</th>
+                      <th>Due Date</th>
+                      <th>Task Hours Needed</th>
+                      <th>Associated Task Id</th>
+                      <th>Reviewer</th>
+                      <th>Task Description</th>
+                      <th>Files</th>
+                      <th>Update</th>
+                    </tr>
+                    <% var x=0 %>
+                    <% dataArray.forEach(function(ele){ %>
+                    <tr>
+                      <td><%= x =x+1 %></td>
+                      <td><%= ele.taskName %></td>
+                      <td><%= ele.taskDesc %></td>
+                      <td><%= ele.taskRelease[0].releaseName %></td>
+                      <td><%= ele.taskSprint[0].sprintName %></td>
+                      <td><%= ele.taskType[0].taskName %></td>
+                      <td><%= ele.assignBy[0].name %></td>
+                      <td><%= moment(ele.startDate).format('Do MMMM YYYY') %></td>
+                      <td><%= moment(ele.dueDate).format('Do MMMM YYYY') %></td>
+                      <td><%= ele.taskHourNeed %></td>
+                      <td><%= ele.taskId %></td>
+                      <td><%= ele.taskReviewer[0].name %></td>
+                      <td><%= ele.taskNotes %></td>
+                      <% if(ele.taskFiles) { %>
+                        <td> <a href="/files/<%= ele.taskFiles %>">Files</a> </td>
+                      <% } else { %>
+                          <td> No Files </td>
+                      <% } %>
+                      <td><a href="/empUpdateAssignedTask?taskId=<%= ele._id %>" ><button style="background-color: green; color:white">Update</button></a></td>
+                    </tr>
+                    <% }) %>
+                  </table>
+                </div>
+              </div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div>
+    <div>
+      <div>
+        <h1>Admin Dashboard</h1>
+      </div>
+      <%- include('adminLeftNav') %>
+
+      <div class="rightcontainer">
+        <h2>Add Task Sprint</h2>
+        <p style="color: red;"><%= msg %></p>
+        <div class="frm">
+          <form action="" method="post">
+            Sprint Name : <input type="text" name="task_spint_name" placeholder="Enter task name" required><br><br>
+            <input class="sub" type="submit" name="submit" value="Add Sprint">
+          </form>
+        </div>
+        <h2>List of Sprint</h2>
+        <div>
+          <table>
+            <tr>
+              <th>Serial No</th>
+              <th>Designation Name</th>
+            </tr>
+            <% if(taskSpirntArray){ %>
+              <% var x=0 %>
+            <% taskSpirntArray.forEach(function(ele){ %>
+            <tr>
+              <td><%= x=x+1 %></td>
+              <td><%= ele.sprintName %></td>
+            </tr>
+            <% }) }else{ %>
+            <p style="color: red;">Please refreash</p>
+            <% } %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div>
+    <div>
+      <div>
+        <h1>Employee Dashboard</h1>
+      </div>
+      <%- include("empLeftNav") %>
+
+      <div class="rightcontainer">
+        <h2>Update Task</h2>
+        <!-- printing message as data has been inseted -->
+        <p style="color: red;"><%= msg %></p>
+        <div class="frm">
+          <form action="" method="post" enctype="multipart/form-data">
+            Date : <%= moment().format('Do MMMM YYYY'); %>
+            <br><br>
+            Task Name :
+            <input type="text" name="task_name" placeholder="Enter task name" required><br><br>
+            Task Type :
+            <select name="task_type" required>
+              <option value="">Please Choose...</option>
+              <% taskArray.forEach(function(ele) { %>
+              <option value="<%= ele._id %>"><%= ele.taskName %></option>
+              <% }) %>
+            </select><br><br>
+
+            Hours Spend On Task :
+            <select name="task_hour" required>
+              <option value="">Please Choose...</option>
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+            </select><br><br>
+
+            Task Status :
+            <select name="task_status" required>
+              <option value="">Please Choose...</option>
+              <% statusArray.forEach(function(ele) { %>
+              <option value="<%= ele._id %>"><%= ele.StatusName %></option>
+              <% }) %>
+            </select><br><br>
+
+            Description :
+            <textarea name="emp_comments" rows="2" cols="30" required></textarea><br><br>
+
+            Any File :
+            <input type="file" name="file" placeholder="Upload files"><br><br>
+            <input class="sub" type="submit" name="submit" value="Update Task">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

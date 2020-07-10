@@ -1,0 +1,62 @@
+body {
+  /* padding: 50px; */
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.leftcontainer {
+ width: 12%; float: left; padding: 10px 20px; border: 1px solid red; margin-left: 50px;
+}
+/* used in admin dshabord */
+.adminoption {
+  padding: 10px;
+}
+.rightcontainer {
+  /* width: 40%; */
+  float: right;
+  border: 1px solid red;
+  padding: 20px;
+  margin: 0 20px;
+  width: 70%;
+}
+/* used in view employee in admin pannel */
+.rightcontainernext {
+  float: left;
+  border: 1px solid red;
+  padding: 20px;
+  margin: 0 50px;
+}
+.rightcontainerViewEmp {
+  float: right;
+  border: 1px solid red;
+  padding: 20px;
+  margin: 0 10px;
+  width: 72%;
+  overflow: scroll;
+}
+.rightcontainerViewTask {
+  float: right;
+  border: 1px solid red;
+  padding: 20px;
+  margin: 0 10px;
+  width: 72%;
+  overflow: scroll;
+}
+/* sued in view employ in admin area */
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+/* user in apdmin add emplyee */
+.frm{
+  margin-left: 200px;
+}
+/* it used in every submin and button */
+.sub{
+  margin-left: 70px;
+  background-color: green;
+  color: white;
+  padding: 5px;
+}

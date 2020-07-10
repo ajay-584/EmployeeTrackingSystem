@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div>
+        <div>
+            <div><h1>Admin Dashboard</h1></div>
+            <%- include("adminLeftNav") %>
+
+            <div class="rightcontainer">
+              <h2>Add Status</h2>
+              <p style="color: red;"><%= msg %></p>
+              <div class="frm">
+                <form action="" method="post">
+                    Status Name : <input type="text" name="StatusName" placeholder="Enter task name" required><br><br>
+                                <input class="sub" type="submit" name="submit" value="Add skill">
+                </form>
+              </div>
+              <h2>List of Status</h2>
+              <div>
+                <table>
+                  <tr>
+                    <th>Serial No</th>
+                    <th>Status Name</th>
+                  </tr>
+                  <% if(statusArray){ %>
+                    <% var x=0 %>
+                    <% statusArray.forEach(function(ele){ %>
+                    <tr>
+                      <td><%= x=x+1 %></td>
+                      <td><%= ele.StatusName %></td>
+                    </tr>
+                    <% }) }else{ %>
+                      <p style="color: red;">Please refreash</p>
+                      <% } %>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

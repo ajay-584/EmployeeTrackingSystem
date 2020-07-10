@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div>
+    <div>
+      <div>
+        <h1>Admin Dashboard</h1>
+      </div>
+      <%- include("adminLeftNav") %>
+
+      <div class="rightcontainerViewEmp">
+        <h2>View Employee</h2>
+        <div>
+          <table>
+            <tr>
+              <th>Serial No</th>
+              <th>Name</th>
+              <th>Phone No</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Designation</th>
+              <th>Primary Skills</th>
+              <th>Secondary Skills</th>
+              <th>Joining Date</th>
+              <th>Expected Work hour/Day</th>
+            </tr>
+            <% var x=0 %>
+            <% emparray.forEach(function (element) { %>
+            <tr>
+              <td><%= x =x+1 %></td>
+              <td><%= element.name %></td>
+              <td><%= element.phoneNo %></td>
+              <td><%= element.email %></td>
+              <td><%= element.gender %></td>
+              <td><%= element.designation[0].designationName %></td>
+              <td><%= element.primarySkill[0].skillName %></td>
+              <td><%= element.secondarySkill[0].skillName %></td>
+              <td><%= moment(element.joinDate).format('Do MMMM YYYY') %></td>
+              <th><%= element.workHour %></th>
+            </tr>
+            <% }) %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

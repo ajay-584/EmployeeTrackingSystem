@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div>
+        <div>
+            <div><h1>Admin Dashboard</h1></div>
+            <%- include('adminLeftNav') %>
+            <div class="rightcontainerViewTask">
+                <h2>Employee Daily Updates </h2>
+                <div>
+                  <table>
+                    <tr>
+                      <th>Serial No</th>
+                      <th>Emp Name</th>
+                      <th>Task Name</th>
+                      <th>Task Type</th>
+                      <th>Update Date</th>
+                      <th>Hours Spend</th>
+                      <th>Task Status</th>
+                      <th>Your Comments</th>
+                      <th>Files</th>
+                    </tr>
+                    <% var x=0 %>
+                    <% dataArray.forEach(function(ele){ %>
+                    <tr>
+                      <td><%= x =x+1 %></td>
+                      <td><%= ele.empId[0].name %></td>
+                      <td><%= ele.taskName %></td>
+                      <td><%= ele.taskType[0].taskName %></td>
+                      <td><%= moment(ele.UpdatedOn).format('Do MMMM YYYY') %></td>
+                      <td><%= ele.spendsHourOnTask %></td>
+                      <td><%= ele.taskStatus[0].StatusName %></td>
+                      <td><%= ele.empComments %></td>
+                      <% if(ele.taskFiles) { %>
+                        <td> <a href="/files/<%= ele.taskFiles %>">Files</a> </td>
+                      <% } else { %>
+                          <td> No Files </td>
+                      <% } %>
+                    </tr>
+                    <% }) %>
+                  </table>
+                </div>
+              </div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <div style="margin-left:30%; margin-right: 20%; padding: 100px; border: 1px solid red;">
+        <h1>Admin Login</h1>
+        <p style="color: red;"><%= msg %></p>
+      <div style="padding-top: 20px;" >
+          <form action="/adminLogin" method="post" >
+              <label for="email">Enter email</label><br>
+              <input type="email" name="adminEmail" placeholder="Enter your email" required><br><br>
+              <label for="pass">Enter password</label><br>
+              <input type="password" name="adminPass" placeholder="Enter password" required><br><br>
+              <input class="sub" type="submit" value=" Login ">
+          </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "employeetracker",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV = production node ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "ejs": "~2.6.1",
+    "env": "0.0.2",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.1.7-alpha.3",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "moments": "0.0.2",
+    "mongoose": "^5.9.17",
+    "morgan": "~1.9.1",
+    "node-localstorage": "^2.1.6",
+    "uuid": "^8.1.0"
+  },
+  "description": "emplyeetracker",
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "Ajay_Kumar",
+  "license": "ISC"
+}

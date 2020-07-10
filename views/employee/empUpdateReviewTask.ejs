@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div>
+    <div>
+      <div>
+        <h1>Employee Dashboard</h1>
+      </div>
+      <%- include("empLeftNav") %>
+
+      <div class="rightcontainer">
+        <h2>Assign Task</h2>
+        <% if(updateFlag == '1'){ %>
+        <p style="color: red;">Task has been updated</p>
+        <% } %>
+        <!-- printing message as data has been inseted -->
+        <div class="frm">
+          <form action="" method="post" enctype="multipart/form-data">
+            <% data.forEach(function(ele){ %>
+            Task Name :
+            <input type="text" name="task_name" value="<%= ele.taskName %>" disabled><br><br>
+            Task Description :
+            <textarea name="task_desc" rows="2" cols="30" disabled><%= ele.taskDesc %></textarea><br><br>
+            Release :
+            <select name="task_sprint" disabled>
+              <option value=""><%= ele.taskRelease[0].releaseName %></option>
+            </select>
+            Sprint :
+            <select name="task_sprint" disabled>
+              <option value=""><%= ele.taskSprint[0].sprintName %></option>
+            </select><br><br>
+            Task Type :
+            <select name="task_type" disabled>
+              <option value=""><%= ele.taskType[0].taskName %></option>
+            </select><br><br>
+            Assign By :
+            <select name="task_assgin_by" disabled>
+              <option value=""><%= ele.assignBy[0].name %></option>
+            </select><br><br>
+            Start Date :
+            <input type="text" placeholder="<%= moment(ele.startDate).format('Do MMMM YYYY') %>" disabled> 
+            Due Date : <input type="text" placeholder="<%= moment(ele.dueDate).format('Do MMMM YYYY') %>" disabled><br><br>
+            Task Hours Needed :
+            <select name="task_hour" disabled>
+              <option value=""><%= ele.taskHourNeed %></option>
+            </select><br><br>
+            Associated Task Id :
+            <select name="associated_task_id" disabled>
+              <option value=""><%= ele.taskId %></option>
+              <option>Not Specified</option>
+            </select><br><br>
+            Reviewer :
+            <select name="task_reviewer" disabled>
+              <option value=""><%= ele.taskReviewer[0].name %></option>
+            </select><br><br>
+            Task Note :
+            <textarea name="task_notes" rows="2" cols="30" disabled><%= ele.taskNotes %></textarea><br><br>
+            Any File :
+            <% if(ele.taskFiles) { %>
+              <td> <a href="/files/<%= ele.taskFiles %>">Files</a> </td>
+            <% } else { %>
+                <td> No Files </td>
+            <% } %>
+            <br><br>
+          <% }); %>
+          </form>
+        </div>
+        <!-- updated task section start here -->
+          <% if(updateData.length){ var y=0 %>
+            <h3>Updated Task</h3>
+            <% updateData.forEach(function(ele){ %>
+            <div class="frm">
+                <form method="post" action="">
+                    <input type="hidden" name="updateAssingTaskId" value="<%= ele._id %>">
+                    Updated On: <input type="text" value="<%= moment(ele.updatedOn).format('Do MMMM YYYY') %>" disabled><br><br>
+                    Task Status: <input type="text" value="<%= ele.taskStatus[0].StatusName %>" disabled><br><br>
+                    Hour Spend On Task: <input type="text" value="<%= ele.HourSpendOnTask %>" disabled><br><br>
+                    Comment: <input type="text" value="<%= ele.empComment %>" disabled><br><br>
+                    Assigner Comment : <input type="text" value="<%= ele.assignerComment %>" disabled><br><br>
+                    Reviewer Commnet: <textarea name="reviewerComment" rows="2" cols="30" required> <%= ele.reviewerComment %> </textarea><br><br>
+                    Files: 
+                    <% if(ele.file) { %>
+                        <a href="/files/<%= ele.file %>">Files</a>
+                    <% } else { %>
+                        No Files
+                    <% } %>
+                    <br><br>
+                    <input class="sub" type="submit" value="update your comments">
+                </form>
+                <hr>
+            </div>
+            <% }); %> 
+          <br><br>
+          <% } %>
+          
+        </div>
+      </div>
+    </div>
+</body>
+</html>

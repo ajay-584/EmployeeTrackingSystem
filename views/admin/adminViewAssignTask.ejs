@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div>
+    <div>
+      <div>
+        <h1>Admin Dashboard</h1>
+      </div>
+      <%- include("adminLeftNav") %>
+
+      <div class="rightcontainerViewTask">
+        <h2>Assigned Task</h2>
+        <!-- printing message as data has been inseted -->
+        <div class="frm">
+          <form action="" method="post" enctype="multipart/form-data">
+            <% data.forEach(function(ele){ %>
+            Task Name :
+            <input type="text" name="task_name" value="<%= ele.taskName %>"><br><br>
+            Task Description :
+            <textarea name="task_desc" rows="2" cols="30"><%= ele.taskDesc %></textarea><br><br>
+            Release :
+            <select name="task_sprint">
+              <option value=""><%= ele.taskRelease[0].releaseName %></option>
+            </select>
+            Sprint :
+            <select name="task_sprint">
+              <option value=""><%= ele.taskSprint[0].sprintName %></option>
+            </select><br><br>
+            Task Type :
+            <select name="task_type">
+              <option value=""><%= ele.taskType[0].taskName %></option>
+            </select><br><br>
+            Assign By :
+            <select name="task_assgin_by">
+              <option value=""><%= ele.assignBy[0].name %></option>
+            </select><br><br>
+            Start Date :
+            <input type="text" placeholder="<%= moment(ele.startDate).format('Do MMMM YYYY') %>"> 
+            Due Date : <input type="text" placeholder="<%= moment(ele.dueDate).format('Do MMMM YYYY') %>"><br><br>
+            Task Hours Needed :
+            <select name="task_hour">
+              <option value=""><%= ele.taskHourNeed %></option>
+            </select><br><br>
+            Associated Task Id :
+            <select name="associated_task_id">
+              <option value=""><%= ele.taskId %></option>
+              <option>Not Specified</option>
+            </select><br><br>
+            Reviewer :
+            <select name="task_reviewer" >
+              <option value=""><%= ele.taskReviewer[0].name %></option>
+
+            </select><br><br>
+            Task Note :
+            <textarea name="task_notes" rows="2" cols="30" placeholder="<%= ele.taskNotes %>"></textarea><br><br>
+            Any File :
+            <% if(ele.taskFiles) { %>
+              <td> <a href="/files/<%= ele.taskFiles %>">Files</a> </td>
+            <% } else { %>
+                <td> No Files </td>
+            <% } %>
+            <br><br>
+          <% }); %>
+          </form>
+        </div>
+
+          <% if(updateData.length){ var y=0 %>
+          <div>
+            <h3>Updated Task</h3>
+            <table>
+              <tr>
+                <th>S No</th>
+                <th>Updated On</th>
+                <th>Task Status</th>
+                <th>Hour Spend On Task</th>
+                <th>Comment</th>
+                <th>Assigner Comment</th>
+                <th>Reviewer Commnet</th>
+                <th>Files</th>
+              </tr>
+              <% updateData.forEach(function(ele){ %>
+                <tr>
+                  <td><%= y = y+1 %></td>
+                  <td><%= moment(ele.updatedOn).format('Do MMMM YYYY') %></td>
+                  <td><%= ele.taskStatus[0].StatusName %></td>
+                  <td><%= ele.HourSpendOnTask %></td>
+                  <td><%= ele.empComment %></td>
+                  <td><%= ele.assignerComment %></td>
+                  <td><%= ele.reviewerComment %></td>
+                  <% if(ele.file) { %>
+                    <td> <a href="/files/<%= ele.file %>">Files</a> </td>
+                  <% } else { %>
+                      <td> No Files </td>
+                  <% } %>
+                </tr>
+                <% }); %>
+            </table>
+          </div>
+          <% } %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
