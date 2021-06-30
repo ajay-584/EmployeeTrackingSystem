@@ -55,7 +55,7 @@ router.get('/adminLogin', function (req, res, next) {
 router.post('/adminLogin', function (req, res, next) {
     // checking amdin email
     // adminLogin.create({ email:req.body.adminEmail,password:req.body.adminPass});
-    console.log("admin data insetted");
+    console.log("admin data inserted");
     adminLogin.findOne(
       { email: req.body.adminEmail },
       function (err, result) {
